@@ -1,0 +1,12 @@
+server:
+  port: 8084
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/simulator
+    username: postgres
+    password: 1234
+
+simulator:
+  min-amount: 10
+  max-amount: 10000
