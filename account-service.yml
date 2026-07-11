@@ -10,3 +10,8 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8180/realms/banking
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
