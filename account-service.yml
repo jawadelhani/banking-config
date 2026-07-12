@@ -18,8 +18,10 @@ management:
 keycloak:
   server-url: http://localhost:8180
   realm: banking
+
   admin:
-    realm: master
     username: admin
     password: admin
-    client-id: admin-cli
+
+  client-id: admin-cli
+  public-client-id: banking-client
