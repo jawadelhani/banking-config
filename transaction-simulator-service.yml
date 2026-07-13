@@ -1,12 +1,20 @@
 server:
   port: 8084
-
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/simulator
     username: postgres
     password: 1234
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/banking
 simulator:
   min-amount: 10
   max-amount: 10000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
