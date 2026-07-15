@@ -3,8 +3,8 @@ server:
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/accounts
-    username: postgres
-    password: 1234
+    username: &{DB_USERNAME}
+    password: &{DB_PASSWORD}
   security:
     oauth2:
       resourceserver:
@@ -19,7 +19,7 @@ keycloak:
   server-url: http://localhost:8180
   realm: banking
   public-client-id: banking-client
-  client-secret: SaEsxx1zZCrmq6GcnSV2uub06cMQQSyU
+  client-secret: &{KEYCLOAK_SECRET}
   admin:
     realm: master
     username: admin

@@ -1,15 +1,19 @@
 server:
   port: 8083
+
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/agency
-    username: postgres
-    password: 1234
+    username: &{DB_USERNAME}
+    password: &{DB_PASSWORD}
+  kafka:
+    bootstrap-servers: localhost:9092
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8180/realms/banking
+
 management:
   endpoints:
     web:
