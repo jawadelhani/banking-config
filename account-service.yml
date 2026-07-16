@@ -1,38 +1,30 @@
 server:
   port: 8081
+
 spring:
-  application:
-    name: account-service
   datasource:
     url: jdbc:postgresql://localhost:5432/accounts
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8180/realms/banking
-  
-  cloud:
-    config:
-      label: main
-    vault:
-      uri: http://localhost:8200
-      token: root
-      kv:
-        enabled: true
-        backend: secret
-        default-context: banking
+
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+
 keycloak:
   server-url: http://localhost:8180
   realm: banking
   public-client-id: banking-client
   client-secret: ${KEYCLOAK_SECRET}
+
   admin:
     realm: master
     username: admin
