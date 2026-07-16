@@ -14,7 +14,7 @@ spring:
       label: main
     vault:
       uri: http://localhost:8200
-      token: ${VAULT_TOKEN}
+      token: root
       kv:
         enabled: true
         backend: secret
