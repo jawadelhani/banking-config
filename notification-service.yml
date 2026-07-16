@@ -1,35 +1,24 @@
 server:
   port: 8082
+
 spring:
-  application:
-    name: notification-service
   datasource:
     url: jdbc:postgresql://localhost:5432/notification
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
       group-id: notification-service
       auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      key-deserializer: org.springframework.kafka.common.serialization.StringDeserializer
       value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
       properties:
         spring.json.trusted.packages: "*"
         spring.json.use.type.headers: false
         spring.json.value.default.type: com.jawad.bank.notification.events.CardSuggestionEvent
-  config:
-    import: "configserver:http://localhost:8888,vault://"
-  cloud:
-    config:
-      label: main
-    vault:
-      uri: http://localhost:8200
-      token: root
-      kv:
-        enabled: true
-        backend: secret
-        default-context: banking
+
   mail:
     host: smtp.gmail.com
     port: 587
@@ -38,11 +27,13 @@ spring:
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
+
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: http://localhost:8180/realms/banking
+
 management:
   endpoints:
     web:
