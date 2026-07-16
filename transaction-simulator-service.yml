@@ -5,6 +5,16 @@ spring:
     url: jdbc:postgresql://localhost:5432/simulator
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
+  config:
+    import: "configserver:,vault://"
+  cloud:
+    vault:
+      uri: http://localhost:8200
+      token: ${VAULT_TOKEN}
+      kv:
+        enabled: true
+        backend: secret
+        default-context: banking
   kafka:
     bootstrap-servers: localhost:9092
     producer:
